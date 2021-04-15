@@ -21,7 +21,7 @@ class LinearClassifier(object):
         svc_predicted = svc.predict(self.x_test)
         print('SVM Accuracy: ', str(self.calculate_accuracy(svc_predicted)))
         print('***SVM Classification Results***\n', classification_report(self.y_test, svc_predicted))
-        self.create_confusion_matrix(self, svc_predicted, exp='SVM')
+        #self.create_confusion_matrix(self, svc_predicted, SVM')
         return svc_predicted
 
     def knn_classifier(self):
@@ -29,7 +29,7 @@ class LinearClassifier(object):
         knn_predicted = knn_model.predict(self.x_test)
         print('KNN Accuracy: ', str(self.calculate_accuracy(knn_predicted)))
         print('***KNN Classification Results***\n', classification_report(self.y_test, knn_predicted))
-        self.create_confusion_matrix(self,knn_predicted, exp='KNN')
+        #self.create_confusion_matrix(self,knn_predicted, 'KNN')
         return knn_predicted
 
     def calculate_accuracy(self, y_pred):

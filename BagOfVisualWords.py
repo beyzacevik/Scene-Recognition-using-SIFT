@@ -20,6 +20,7 @@ class BagOfVisualWords(object):
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             keypoints, descriptor = sift.detectAndCompute(gray, None)
             images_descriptors.append((image_path, descriptor))
+
         return images_descriptors
 
     def fetch_only_features(self, images_descriptors):
@@ -30,17 +31,14 @@ class BagOfVisualWords(object):
 
         return features
 
-    # def build_vocabulary(self, descriptors, vocab_size):
-    #     k_means = KMeans(n_clusters=vocab_size, random_state=0).fit(descriptors)
-    #     centers = k_means.cluster_centers_.tolist()
-    #     closest, _ = pairwise_distances_argmin_min(centers, descriptors)
-    #     vocabulary = descriptors[closest]
-    #     return vocabulary
-
     def build_vocabulary(self, descriptors, vocab_size):
-        vocabulary, distortion = kmeans(descriptors.astype(float), vocab_size, 1)
-        return vocabulary
 
+         k_means = KMeans(n_clusters=vocab_size, random_state=0).fit(descriptors)
+         centers = k_means.cluster_centers_.tolist()
+         closest, _ = pairwise_distances_argmin_min(centers, descriptors)
+         vocabulary = descriptors[closest]
+
+         return vocabulary
 
     def create_histograms(self, images_descriptors, vocabulary, vocab_size):
 
@@ -54,8 +52,10 @@ class BagOfVisualWords(object):
 
         return histograms
 
-    def convert_histogram_to_df(self,features):
+    def convert_features_to_df(self,features):
+
       df = pd.DataFrame(features)
       img_idx = pd.Series([i for i in range(len(self.image_list))])
       df.set_index(img_idx)
+
       return df
