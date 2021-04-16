@@ -3,7 +3,7 @@ import os
 
 class Dataset(object):
 
-    def __init__(self, dataset_path='/Users/beyzacevik/Downloads/SceneDataset'):
+    def __init__(self, dataset_path):
         self.dataset_path = dataset_path
 
     def extract_dataset(self):

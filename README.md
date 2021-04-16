@@ -11,7 +11,7 @@ Scene Classification is implemented using Tiny Image feature and Bag of Visual W
 ✅ KMeans clustering is implemented to create vocabulary. 
 
 
-😶 Tiny Image features are not representative enough as they are not robust to scale, rotation, brightness changes etc. in an image. 
+`😶 Tiny Image features are not representative enough as they are not robust to scale, rotation, brightness changes etc. in an image. 
 
 📉 KNN Accuracy: 34%
 
@@ -21,7 +21,7 @@ Scene Classification is implemented using Tiny Image feature and Bag of Visual W
 
 📈 KNN Accuracy: 55%
 
-📈 Linear SVM Accuracy: 70%
+📈 Linear SVM Accuracy: 70%`
 
 
 An Example Classification Result: 
@@ -31,6 +31,8 @@ An Example Classification Result:
 
 This model's performance can be further developed by using different and faster clustering methods for vocabulary building.
 Also, number of features can be reduced by eliminating some of the descriptors. Better strategies can be applied to select descriptors as features. (TFIDF etc.)
+
+`_**RUN**: python run.py 'path/to/dataset'_`
 
 NOTE: 
 - opencv-python==4.5.1 is required to use SIFT_create().
