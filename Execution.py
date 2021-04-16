@@ -13,15 +13,15 @@ def execute(path):
 
     bovw = BagOfVisualWords(images)
     images_descriptors = bovw.extract_sift_features()
-    descriptors = bovw.fetch_only_features(images_descriptors)
+    descriptors_values = list(images_descriptors.values())
+    descriptors = bovw.convert_to_ndarray(descriptors_values)
     vocabulary = bovw.build_vocabulary(descriptors=descriptors, vocab_size=200)
     histograms = bovw.create_histograms(images_descriptors, vocabulary, 200)
-
-    scaler = MinMaxScaler().fit(histograms)
-    histograms = scaler.transform(histograms)
+    histograms = bovw.normalize(histograms)
     histogram_df = bovw.convert_features_to_df(histograms)
 
-    x_train_df, x_test_df, y_train, y_test = train_test_split(histogram_df, labels, random_state=42, shuffle=True, test_size=0.20)
+    x_train_df, x_test_df, y_train, y_test = train_test_split(histogram_df, labels, random_state=42, shuffle=True,
+                                                              test_size=0.20)
     x_train = np.asarray(x_train_df)
     x_test = np.asarray(x_test_df)
 
@@ -32,7 +32,8 @@ def execute(path):
     tinyImage_features = tinyImage.extract_tiny_image_features()
     tinyImage_df = bovw.convert_features_to_df(tinyImage_features)
 
-    x_train_df, x_test_df, y_train, y_test = train_test_split(tinyImage_df, labels, random_state=42, shuffle=True, test_size=0.20)
+    x_train_df, x_test_df, y_train, y_test = train_test_split(tinyImage_df, labels, random_state=42, shuffle=True,
+                                                              test_size=0.20)
     x_train = np.asarray(x_train_df)
     x_test = np.asarray(x_test_df)
 
