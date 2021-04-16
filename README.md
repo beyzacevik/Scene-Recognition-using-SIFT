@@ -32,7 +32,7 @@ An Example Classification Result:
 This model's performance can be further developed by using different and faster clustering methods for vocabulary building.
 Also, number of features can be reduced by eliminating some of the descriptors. Better strategies can be applied to select descriptors as features. (TFIDF etc.)
 
-`_**RUN**: python run.py 'path/to/dataset'_`
+**RUN**: `python run.py 'path/to/dataset'`
 
 NOTE: 
 - opencv-python==4.5.1 is required to use SIFT_create().
