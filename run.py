@@ -1,5 +1,5 @@
 import sys
-from SceneRecognition.Execution import *
+from .Execution import *
 if __name__ == '__main__':
     try:
         dataset_path = sys.argv[1]

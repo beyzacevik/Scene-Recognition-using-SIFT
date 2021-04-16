@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.svm import SVC
 import seaborn as sns
 
@@ -14,14 +14,13 @@ class LinearClassifier(object):
         self.y_test = y_test
         self.classes = ['Bedroom','Highway', 'Kitchen','LivingRoom','Mountain', 'Office']
 
-
     def svm_classifier(self):
         svc_model = SVC()
         svc = svc_model.fit(self.x_train, self.y_train)
         svc_predicted = svc.predict(self.x_test)
         print('SVM Accuracy: ', str(self.calculate_accuracy(svc_predicted)))
         print('***SVM Classification Results***\n', classification_report(self.y_test, svc_predicted))
-        #self.create_confusion_matrix(self, svc_predicted, SVM')
+        #   self.create_confusion_matrix(self, svc_predicted, SVM')
         return svc_predicted
 
     def knn_classifier(self):
@@ -29,7 +28,7 @@ class LinearClassifier(object):
         knn_predicted = knn_model.predict(self.x_test)
         print('KNN Accuracy: ', str(self.calculate_accuracy(knn_predicted)))
         print('***KNN Classification Results***\n', classification_report(self.y_test, knn_predicted))
-        #self.create_confusion_matrix(self,knn_predicted, 'KNN')
+        #  self.create_confusion_matrix(self,knn_predicted, 'KNN')
         return knn_predicted
 
     def calculate_accuracy(self, y_pred):
@@ -41,7 +40,6 @@ class LinearClassifier(object):
         acc = correct / float(len(y_pred)) * 100.0
 
         return acc
-
 
     def create_confusion_matrix(self, y_pred, exp):
 
